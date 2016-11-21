@@ -58,10 +58,11 @@ E.g. when processing Python2 files, add \"--py2\".
 See URL `http://mypy-lang.org/'."
 
   :command ("mypy"
+	    "--show-column-number"
             (eval flycheck-python-mypy-args)
             source-original)
   :error-patterns
-  ((error line-start (file-name) ":" line ": error:" (message) line-end))
+  ((error line-start (file-name) ":" line (optional ":" column) ": error:" (message) line-end))
   :modes python-mode)
 
 (add-to-list 'flycheck-checkers 'python-mypy t)
